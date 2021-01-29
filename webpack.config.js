@@ -1,59 +1,94 @@
-const path = require('path')
-const MODE = "development";
-const enabledSourceMap = MODE === "development";
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const nowMode = 'production';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const imageRoot = '/'
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: MODE,
-  entry: './src/index.js',
+  mode: nowMode,
+  entry: {
+    main: './src/js/index.js'
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'main.js',
-    assetModuleFilename: "imgs/[name][ext]"
+    path: path.resolve(__dirname, './dist'),
+    filename: "js/[name]-[hash].js"
   },
   module: {
     rules: [
+      // StyleSheet File
       {
-        test: /\.scss/,
+        test: /.(css|scss|sass)$/,
         use: [
-          "style-loader",
           {
-            loader: "css-loader",
-            options: {
-              url: false,
-              sourceMap: enabledSourceMap,
-              importLoaders: 2
-            }
+            // minifiy
+            loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: "sass-loader",
-            options: {
-              sourceMap: enabledSourceMap
-            },
+            loader: 'css-loader',
+            options: { sourceMap: true },
           },
+          {
+            loader: 'sass-loader'
+          }
         ],
       },
+      // Photo File
       {
-        test: /\.(git|png|jpg)$/,
-        type: "asset",
-        parser: {
-          dataUrlCondition: {
-            maxsize: 100 * 1024,
+        test: /\.(png|jpg|jpeg|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              esModule: false,
+              name: 'images/[name]-[hash].[ext]',
+              publicPath: imageRoot
+            },
           },
-        },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              }
+            }
+          }
+        ]
+      },
+      {
+        // Pug File
+        test: /\.pug/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'pug-html-loader',
+            options: {
+              pretty: true,
+            }
+          }
+        ]
       },
     ],
   },
+  // Local Server Setting
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     openPage: "index.html",
     port: 3000,
     open: true
   },
-  target: ["web", "es5"],
   plugins: [
+    // CssMinify Plugin
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name]-[hash].css'
+    }),
     new HtmlWebpackPlugin({
-      template: "./src/html/top.html"
-    })
-  ]
+      template: './src/templates/index.pug',
+      filename: 'index.html'
+    }),
+    new CleanWebpackPlugin()
+  ],
 };
