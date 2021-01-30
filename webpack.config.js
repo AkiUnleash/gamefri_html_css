@@ -4,8 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const imageRoot = '/'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const globule = require('globule');
+const CopyPlugin = require("copy-webpack-plugin");
 
-module.exports = {
+const app = {
   mode: nowMode,
   entry: {
     main: './src/js/index.js'
@@ -27,6 +29,17 @@ module.exports = {
           {
             loader: 'css-loader',
             options: { sourceMap: true },
+          },
+          // ベンダープレフィックスの自動付与
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ["autoprefixer", { grid: true }],
+                ],
+              },
+            },
           },
           {
             loader: 'sass-loader'
@@ -85,10 +98,39 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles/[name]-[hash].css'
     }),
-    new HtmlWebpackPlugin({
-      template: './src/templates/index.pug',
-      filename: 'index.html'
-    }),
-    new CleanWebpackPlugin()
+    // distの自動削除
+    new CleanWebpackPlugin(),
+    // Faviconをdistへコピー
+    new CopyPlugin({
+      patterns: [{
+        from: "*",
+        to: "",
+        context: "src/img/icon/"
+      }],
+    }
+    )
   ],
 };
+
+// pubファイルの配列挿入
+const templates = globule.find(
+  './src/templates/**/*.pug', {
+  ignore: [
+    // private ignore
+    './src/templates/**/_*.pug'
+  ]
+}
+)
+
+// 配列分のHtmlWebpackPluginを挿入
+templates.forEach((template) => {
+  const fileName = template.replace('./src/templates/', '').replace('.pug', '.html')
+  app.plugins.push(
+    new HtmlWebpackPlugin({
+      filename: `${fileName}`,
+      template: template,
+    })
+  )
+})
+
+module.exports = app;
