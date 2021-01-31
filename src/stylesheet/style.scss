@@ -1,0 +1,170 @@
+@import "variables";
+
+body {
+  color: $subColor;
+  font-family: "Hiragino Sans W2", "SF Pro";
+}
+
+header {
+  @include mq(lg) {
+    div.top-desktop-header-container {
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+      img {
+        margin: 32px 16px 32px 32px;
+        height: 56px;
+      }
+      div {
+        font-size: 16px;
+        margin: 16px;
+      }
+      div.right {
+        margin-left: auto;
+      }
+    }
+  }
+
+  @include mq(md) {
+    display: none;
+  }
+}
+
+// Button
+a.button_fill {
+  background-color: $mainColor;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  color: $baseColor;
+  border-radius: 3px;
+  padding: 12px 16px;
+}
+
+a.button_white {
+  @extend .button_fill;
+  background-color: $baseColor;
+  color: $mainColor;
+  border: $mainColor 1px solid;
+}
+
+section.top-section1 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  img {
+    margin: 120px auto 0px;
+    height: 176px;
+  }
+  div {
+    font-size: 28px;
+    margin: 40px auto;
+    a.button_fill_top {
+      @extend .button_fill;
+      padding: 16px 36px;
+    }
+    a.button_white_top {
+      @extend .button_white;
+      padding: 16px 105px;
+    }
+  }
+}
+
+section.top-section2 {
+  margin: 40px auto;
+  padding: 88px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: repeat url("../img/top-background.png");
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  div {
+    margin: auto;
+  }
+  div.title-why {
+    padding: 0px 0px 36px 0px;
+    color: $baseColor;
+    font-size: 30px;
+  }
+  div.title-discription {
+    color: $baseColor;
+    padding: 12px;
+    font-size: 28px;
+  }
+}
+
+section.top-section3 {
+  figure {
+    width: 1024px;
+    display: flex;
+    margin: auto;
+    img {
+      margin: 48px;
+    }
+    figcaption {
+      div.title {
+        color: #01579b;
+        font-size: 28px;
+        padding: 112px 0px 20px 48px;
+      }
+      div.discription {
+        font-size: 18px;
+        padding: 20px 88px;
+      }
+    }
+  }
+}
+
+section.top-section4 {
+  figure {
+    width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    img {
+      margin: 48px;
+    }
+    figcaption {
+      div.title {
+        color: #01579b;
+        font-size: 28px;
+        padding: 112px 0px 20px 48px;
+      }
+      div.discription {
+        font-size: 18px;
+        padding: 20px 88px;
+      }
+    }
+  }
+}
+
+footer {
+  box-shadow: -10px 0px 5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  div {
+    padding: 0px 200px;
+    width: 1024px;
+    display: flex;
+    font-size: 18px;
+    p {
+      padding: 55px 0px 24px 8px;
+    }
+    nav {
+      width: 200px;
+      ul li {
+        padding: 16px 8px;
+      }
+    }
+  }
+  div.img_center {
+    width: 100%;
+    img {
+      margin: auto;
+      padding: 8px;
+      width: 162px;
+    }
+  }
+  p.copyright {
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 0px 16px;
+  }
+}
