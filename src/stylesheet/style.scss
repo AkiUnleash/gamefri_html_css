@@ -30,7 +30,7 @@ body {
       margin-left: auto;
     }
 
-    %__button--fill {
+    %__button {
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
       border-radius: 3px;
       padding: 12px 16px;
@@ -38,13 +38,13 @@ body {
 
     &__button {
       &--fill {
-        @extend %__button--fill;
+        @extend %__button;
         background-color: $mainColor;
         color: $baseColor;
         margin-right: 16px;
       }
       &--white {
-        @extend %__button--fill;
+        @extend %__button;
         background-color: $baseColor;
         color: $mainColor;
         border: $mainColor 1px solid;
@@ -197,32 +197,208 @@ body {
   }
 }
 
-// Button
-
-section.top-section1 {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  img {
-    margin: 120px auto 0px;
-    padding: 0px 20px;
-    width: 100%;
+@include mq(sm) {
+  div.header-desktop {
+    display: none;
   }
-  div {
-    font-size: 28px;
-    margin: 40px auto;
-    a.button_fill_top {
-      // @extend .button_fill;
-      padding: 16px 36px;
+
+  .header {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  /*ドロワー*/
+  .header-mobile {
+    position: relative;
+    // inputのcheckboxは非表示
+    &__checkbox {
+      display: none;
     }
-    a.button_white_top {
-      // @extend .button_white;
-      padding: 16px 105px;
+    // ハンバーガーアイコン
+    &__icon {
+      cursor: pointer;
+      display: block;
+      width: 80px;
+      height: 80px;
+      position: fixed;
+      right: 0;
+      // ハンバーガーアイコンの中の線
+      &-parts,
+      &-parts:before,
+      &-parts:after {
+        background-color: $mainColor;
+        display: block;
+        width: 32px;
+        height: 3px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &-parts:before,
+      &-parts:after {
+        content: " ";
+      }
+      &-parts:before {
+        top: 16px;
+      }
+      &-parts:after {
+        top: -16px;
+      }
+    }
+
+    // ドロワーメニュー開いた時のメインエリアを暗く
+    &__overlay {
+      background: #000;
+      opacity: 0;
+      pointer-events: none; //ポインタの動作全部無効化
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+    }
+
+    // ドロワーメニュー
+    &__menu {
+      background: #ffffff;
+      color: #000;
+      max-width: 100%;
+      width: 456px;
+      height: 100vh;
+      overflow-y: auto; //スクロール
+      -webkit-overflow-scrolling: touch; //スクロール（SP）
+      position: fixed;
+      top: 0;
+      right: -456px;
+    }
+
+    // メニュー内のロゴ
+    &__logo {
+      width: 456px;
+      padding: 114px 0px 80px;
+      text-align: center;
+    }
+    &__logo_img {
+      width: 113px;
+    }
+
+    &__item {
+      text-align: center;
+      padding: 0px 0px 48px;
+      font-size: 28px;
+    }
+
+    // z-indexの指定（1がメインエリア）
+    &__icon {
+      z-index: 4;
+    }
+    &__menu {
+      z-index: 3;
+    }
+    &__overlay {
+      z-index: 2;
+    }
+
+    // チェックが入ったら（アイコンクリックしたら）
+    &__checkbox:checked ~ {
+      // ハンバーガーアイコン
+      .header-mobile__icon {
+        .header-mobile__icon-parts {
+          background: $subColor;
+        }
+        .header-mobile__icon-parts:before {
+          background: $subColor;
+        }
+        .lheader-mobile__icon-parts:after {
+          background: $subColor;
+        }
+      }
+      // メインエリアを暗くする
+      .header-mobile__overlay {
+        opacity: 0.3;
+        pointer-events: auto; //ポインタの動作デフォルトに戻す
+      }
+      // メニューをだす
+      .header-mobile__menu {
+        right: 0;
+      }
+    }
+    // 動きをスムーズに
+    &__icon-parts,
+    &__icon-parts:after,
+    &__icon-parts:before,
+    &__overlay,
+    &__menu {
+      transition: all 0.3s;
     }
   }
 }
 
-section.top-section2 {
+.top-introduction {
+  display: block;
+  text-align: center;
+  margin: auto;
+
+  @include mq(sm) {
+    margin: 100px auto;
+  }
+
+  &__logimg {
+    margin: 120px auto 0px;
+    @include mq(lg) {
+      width: 470px;
+    }
+    @include mq(md) {
+      width: 100%;
+      padding: 0px 20px;
+    }
+    @include mq(sm) {
+      width: 100%;
+      padding: 0px 20px;
+    }
+  }
+
+  &__catchphrase {
+    text-align: center;
+    font-size: 28px;
+    margin: 40px auto 64px;
+  }
+
+  %__button-b {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    padding: 12px 16px;
+  }
+
+  &__button {
+    text-align: center;
+    margin-bottom: 40px;
+    height: 58px;
+    &--fill {
+      @extend %__button-b;
+      background-color: $mainColor;
+      color: $baseColor;
+      font-size: 28px;
+      margin-right: 16px;
+    }
+    &--white {
+      @extend %__button-b;
+      background-color: $baseColor;
+      color: $mainColor;
+      border: $mainColor 1px solid;
+      font-size: 28px;
+      margin-right: 24px;
+    }
+  }
+}
+
+.top-massage {
   margin: 40px auto;
   padding: 88px;
   display: flex;
@@ -230,63 +406,48 @@ section.top-section2 {
   flex-wrap: wrap;
   background: repeat url("../img/top-background.png");
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  div {
+  text-align: center;
+
+  &__title-why {
     margin: auto;
-  }
-  div.title-why {
     padding: 0px 0px 36px 0px;
     color: $baseColor;
     font-size: 30px;
   }
-  div.title-discription {
+  &__title-discription {
     color: $baseColor;
     padding: 12px;
     font-size: 28px;
   }
 }
 
-section.top-section3 {
-  figure {
+.top-detail {
+  %__figure {
     width: 1024px;
     display: flex;
     margin: auto;
-    img {
-      margin: 48px;
-    }
-    figcaption {
-      div.title {
-        color: #01579b;
-        font-size: 28px;
-        padding: 112px 0px 20px 48px;
-      }
-      div.discription {
-        font-size: 18px;
-        padding: 20px 88px;
-      }
-    }
   }
-}
 
-section.top-section4 {
-  figure {
-    width: 1024px;
-    margin: auto;
-    display: flex;
+  &__figure {
+    @extend %__figure;
+  }
+  &__figure_reversai {
+    @extend %__figure;
     flex-direction: row-reverse;
-    img {
-      margin: 48px;
-    }
-    figcaption {
-      div.title {
-        color: #01579b;
-        font-size: 28px;
-        padding: 112px 0px 20px 48px;
-      }
-      div.discription {
-        font-size: 18px;
-        padding: 20px 88px;
-      }
-    }
+  }
+  &__figure-img {
+    margin: 48px;
+  }
+
+  &__title {
+    color: #01579b;
+    font-size: 28px;
+    padding: 112px 0px 20px 48px;
+  }
+
+  &__discription {
+    font-size: 18px;
+    padding: 20px 88px;
   }
 }
 
