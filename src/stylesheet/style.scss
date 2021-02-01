@@ -368,6 +368,10 @@ body {
     text-align: center;
     font-size: 28px;
     margin: 40px auto 64px;
+    @include mq(sm) {
+      font-size: 18px;
+      margin: 40px auto 40px;
+    }
   }
 
   %__button-b {
@@ -378,14 +382,20 @@ body {
 
   &__button {
     text-align: center;
+    height: 48px;
     margin-bottom: 40px;
-    height: 58px;
+    @include mq(sm) {
+      margin-bottom: 8px;
+    }
     &--fill {
       @extend %__button-b;
       background-color: $mainColor;
       color: $baseColor;
       font-size: 28px;
       margin-right: 16px;
+      @include mq(sm) {
+        font-size: 18px;
+      }
     }
     &--white {
       @extend %__button-b;
@@ -394,17 +404,21 @@ body {
       border: $mainColor 1px solid;
       font-size: 28px;
       margin-right: 24px;
+      @include mq(sm) {
+        font-size: 18px;
+      }
     }
   }
 }
 
 .top-massage {
-  margin: 40px auto;
-  padding: 88px;
   display: flex;
+  margin: 40px auto;
+  padding: 88px 0px;
   flex-direction: column;
   flex-wrap: wrap;
   background: repeat url("../img/top-background.png");
+  background-size: 50px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   text-align: center;
 
@@ -412,74 +426,164 @@ body {
     margin: auto;
     padding: 0px 0px 36px 0px;
     color: $baseColor;
-    font-size: 30px;
+    font-weight: bold;
+    @include mq(lg) {
+      font-size: 30px;
+    }
+    @include mq(md) {
+      font-size: 24px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+    }
   }
   &__title-discription {
     color: $baseColor;
     padding: 12px;
-    font-size: 28px;
+    font-weight: bold;
+    @include mq(lg) {
+      font-size: 28px;
+    }
+    @include mq(md) {
+      font-size: 24px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+    }
   }
 }
 
 .top-detail {
   %__figure {
-    width: 1024px;
     display: flex;
     margin: auto;
   }
 
   &__figure {
     @extend %__figure;
+    @include mq(lg) {
+      width: 1024px;
+    }
+    @include mq(md) {
+      flex-direction: column;
+      flex-direction: column-reverse;
+    }
+    @include mq(sm) {
+      flex-direction: column;
+      flex-direction: column-reverse;
+    }
   }
   &__figure_reversai {
     @extend %__figure;
-    flex-direction: row-reverse;
+    @include mq(lg) {
+      width: 1024px;
+      flex-direction: row-reverse;
+    }
+    @include mq(md) {
+      flex-direction: column;
+      flex-direction: column-reverse;
+    }
+    @include mq(sm) {
+      flex-direction: column;
+      flex-direction: column-reverse;
+    }
   }
   &__figure-img {
     margin: 48px;
+    @include mq(md) {
+      margin: auto;
+      width: 436px;
+    }
+    @include mq(sm) {
+      margin: auto;
+      width: 296px;
+    }
+  }
+
+  &__figcaption {
+    @include mq(md) {
+      text-align: center;
+    }
+    @include mq(sm) {
+      text-align: center;
+    }
   }
 
   &__title {
-    color: #01579b;
-    font-size: 28px;
-    padding: 112px 0px 20px 48px;
+    color: $extraColor;
+    @include mq(lg) {
+      font-size: 28px;
+      padding: 112px 0px 20px 48px;
+    }
+    @include mq(md) {
+      font-size: 28px;
+      padding: 88px 32px 32px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+      padding: 88px 32px 32px;
+    }
   }
 
   &__discription {
     font-size: 18px;
-    padding: 20px 88px;
+    @include mq(lg) {
+      padding: 24px 88px;
+    }
+    @include mq(md) {
+      padding: 0px 24px 32px;
+    }
+    @include mq(sm) {
+      padding: 0px 24px 32px;
+    }
   }
 }
 
-footer {
+.footer {
   box-shadow: -10px 0px 5px rgba(0, 0, 0, 0.3);
   width: 100%;
-  div {
-    padding: 0px 200px;
+}
+.footer-div {
+  padding: 0px 200px;
+  font-size: 18px;
+  display: flex;
+  @include mq(lg) {
     width: 1024px;
-    display: flex;
-    font-size: 18px;
-    p {
-      padding: 55px 0px 24px 8px;
-    }
-    nav {
-      width: 200px;
-      ul li {
-        padding: 16px 8px;
-      }
-    }
   }
-  div.img_center {
-    width: 100%;
-    img {
-      margin: auto;
-      padding: 8px;
-      width: 162px;
-    }
+  @include mq(md) {
+    padding: 0px 100px;
+    flex-direction: column;
+    flex-direction: column-reverse;
   }
-  p.copyright {
-    font-size: 12px;
-    text-align: center;
-    padding: 8px 0px 16px;
+  @include mq(sm) {
+    padding: 0px 50px;
+    flex-direction: column;
+    flex-direction: column-reverse;
   }
+}
+.footer-nav {
+  width: 200px;
+  &__title {
+    padding: 55px 0px 24px 8px;
+    font-weight: bold;
+  }
+  &__li {
+    padding: 16px 8px;
+  }
+}
+
+.footer-log {
+  width: 100%;
+  text-align: center;
+  &__img {
+    margin: auto;
+    padding-top: 40px;
+    width: 162px;
+  }
+}
+
+.footer-copyright {
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 0px 16px;
 }

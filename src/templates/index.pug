@@ -3,6 +3,7 @@ html(lang="ja")
  
   head
     meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
     title ゲムフレ - ゲーム専用ソーシャルネットワークサービス
     link(rel="shortcut icon" href="/favicon.com")
     link(rel="apple-touch-icon" href="/apple-touch-icon.png")
@@ -17,9 +18,9 @@ html(lang="ja")
         div.header-desktop__leftmenu
           a よくある質問
         div.header-desktop__rightmenu
-          a.header-desktop__button--fill 新規作成
+          a.header-desktop__button--fill(href="./singup.html") 新規作成
         div
-          a.header-desktop__button--white ログイン 
+          a.header-desktop__button--white(href="./login.html") ログイン
 
       div.header-mobile
         input.header-mobile__checkbox#drawerCheckbox(type="checkbox")
@@ -34,9 +35,9 @@ html(lang="ja")
             img.header-mobile__logo_img(src="../img/logo_sm.svg")
           ul
             li.header-mobile__item
-              a.header-mobile__item-inner(href="/") ログイン
+              a.header-mobile__item-inner(href="./login") ログイン
             li.header-mobile__item
-              a.header-mobile__item-inner(href="/") 新規アカウント作成
+              a.header-mobile__item-inner(href="./singup.html") 新規アカウント作成
             li.header-mobile__item
               a.header-mobile__item-inner(href="/") よくある質問
             li.header-mobile__item
@@ -47,9 +48,9 @@ html(lang="ja")
         img.top-introduction__logimg(src="../img/logo.svg")
       div.top-introduction__catchphrase ゲームフレンド、欲しくないですか？
       div.top-introduction__button
-        a.top-introduction__button--fill ▶ 新規アカウント作成
+        a.top-introduction__button--fill(href="./singup.html") ▶ 新規アカウント作成
       div.top-introduction__button
-        a.top-introduction__button--white ログイン 
+        a.top-introduction__button--white(href="./login.html") ログイン 
 
     section.top-massage
         div.top-massage__title-why ゲムフレとは？
@@ -77,31 +78,32 @@ html(lang="ja")
           div.top-detail__title 楽しかったことを皆にシェア！
           div.top-detail__discription ゲーム日記をつけることができます。皆からコメントを貰って、フレンドを増やそう！
 
-    footer
-      div
-        nav
-          p 規約
-          ul
-            li 
+    footer.footer
+      div.footer-div
+        nav.footer-nav
+          p.footer-nav__title 規約
+          ul.footer-nav__ul
+            li.footer-nav__li 
               a 利用規約
-            li 
+            li.footer-nav__li 
               a プライバシーポリシー
-        nav
-          p サポート
-          ul
-            li 
+        nav.footer-nav
+          p.footer-nav__title サポート
+          ul.footer-nav__ul
+            li.footer-nav__li 
               a 料金
-            li 
+            li.footer-nav__li 
               a よくある質問
-            li 
+            li.footer-nav__li 
               a お問い合わせ
-        nav
-          p サービス
-          ul
-            li 
+        nav.footer-nav
+          p.footer-nav__title サービス
+          ul.footer-nav__ul
+            li.footer-nav__li 
               a 運営会社
-            li 
+            li.footer-nav__li 
               a 公式ツイッター
-      div.img_center
-        img(src="../img/logo.svg", alt="")  
-      p.copyright © GameFre, Inc.
+
+      div.footer-log
+        img.footer-log__img(src="../img/logo.svg", alt="")  
+      p.footer-copyright © GameFre, Inc.
