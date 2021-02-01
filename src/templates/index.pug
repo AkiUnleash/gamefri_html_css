@@ -1,47 +1,11 @@
 doctype html
 html(lang="ja")
  
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width,initial-scale=1")
-    title ゲムフレ - ゲーム専用ソーシャルネットワークサービス
-    link(rel="shortcut icon" href="/favicon.com")
-    link(rel="apple-touch-icon" href="/apple-touch-icon.png")
-    link(rel="icon" type="image/png" href="/android-chrome-256x256.png")
+  include includes/_head.pug
 
   body
-    header.header
-      div.header-desktop
-        img.header-desktop__img(src="../img/logo.svg")
-        div.header-desktop__leftmenu
-          a 料金プラン
-        div.header-desktop__leftmenu
-          a よくある質問
-        div.header-desktop__rightmenu
-          a.header-desktop__button--fill(href="./singup.html") 新規作成
-        div
-          a.header-desktop__button--white(href="./login.html") ログイン
 
-      div.header-mobile
-        input.header-mobile__checkbox#drawerCheckbox(type="checkbox")
-        //- <!-- ドロワーアイコン -->
-        label.header-mobile__icon(for="drawerCheckbox")
-          span.header-mobile__icon-parts
-        //- <!-- 背景を暗く -->
-        label.header-mobile__overlay(for="drawerCheckbox")
-        //- <!-- ドロワーメニュー -->
-        nav.header-mobile__menu
-          div.header-mobile__logo
-            img.header-mobile__logo_img(src="../img/logo_sm.svg")
-          ul
-            li.header-mobile__item
-              a.header-mobile__item-inner(href="./login") ログイン
-            li.header-mobile__item
-              a.header-mobile__item-inner(href="./singup.html") 新規アカウント作成
-            li.header-mobile__item
-              a.header-mobile__item-inner(href="/") よくある質問
-            li.header-mobile__item
-              a.header-mobile__item-inner(href="/") 問い合わせ
+    include includes/_header.pug
 
     section.top-introduction
       div
@@ -78,32 +42,4 @@ html(lang="ja")
           div.top-detail__title 楽しかったことを皆にシェア！
           div.top-detail__discription ゲーム日記をつけることができます。皆からコメントを貰って、フレンドを増やそう！
 
-    footer.footer
-      div.footer-div
-        nav.footer-nav
-          p.footer-nav__title 規約
-          ul.footer-nav__ul
-            li.footer-nav__li 
-              a 利用規約
-            li.footer-nav__li 
-              a プライバシーポリシー
-        nav.footer-nav
-          p.footer-nav__title サポート
-          ul.footer-nav__ul
-            li.footer-nav__li 
-              a 料金
-            li.footer-nav__li 
-              a よくある質問
-            li.footer-nav__li 
-              a お問い合わせ
-        nav.footer-nav
-          p.footer-nav__title サービス
-          ul.footer-nav__ul
-            li.footer-nav__li 
-              a 運営会社
-            li.footer-nav__li 
-              a 公式ツイッター
-
-      div.footer-log
-        img.footer-log__img(src="../img/logo.svg", alt="")  
-      p.footer-copyright © GameFre, Inc.
+    include includes/_footer.pug
