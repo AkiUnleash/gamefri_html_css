@@ -8,11 +8,9 @@ html(lang="ja")
     link(rel="apple-touch-icon" href="/apple-touch-icon.png")
     link(rel="icon" type="image/png" href="/android-chrome-256x256.png")
 
-  </div>
-
   body
 
-    header
+    header.l-header
       div.top-desktop-header-container
         img(src="../img/logo.svg")
         div 料金プラン
@@ -21,6 +19,28 @@ html(lang="ja")
           a.button_fill 新規作成
         div
           a.button_white ログイン 
+
+      div.l-drawer
+        input.l-drawer__checkbox#drawerCheckbox(type="checkbox")
+        //- <!-- ドロワーアイコン -->
+        label.l-drawer__icon(for="drawerCheckbox")
+          span.l-drawer__icon-parts
+        //- <!-- 背景を暗く -->
+        label.l-drawer__overlay(for="drawerCheckbox")
+        //- <!-- ドロワーメニュー -->
+        nav.l-drawer__menu
+          div.l-drawer__logo
+            img.l-drawer__logo_img(src="../img/logo_sm.svg")
+          ul
+            li.l-drawer__item
+              a.l-drawer__item-inner(href="/") ログイン
+            li.l-drawer__item
+              a.l-drawer__item-inner(href="/") 新規アカウント作成
+            li.l-drawer__item
+              a.l-drawer__item-inner(href="/") よくある質問
+            li.l-drawer__item
+              a.l-drawer__item-inner(href="/") 問い合わせ
+
 
     section.top-section1
       div
