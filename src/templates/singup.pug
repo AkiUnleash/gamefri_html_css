@@ -1,0 +1,31 @@
+doctype html
+html(lang="ja")
+ 
+  include includes/_head.pug
+
+  body
+
+    include includes/_header.pug
+
+    //- singup screen
+    div.singup-form
+      div.singup-form__logo
+        img.singup-form__logoimg(src="../img/logo_sm.svg")
+      form.mui-form
+        div.singup-form__title
+          legend.singup-form__legend ゲムフレに新規アカウント登録
+        div.mui-textfield
+          input(type="text" placeholder="info@example.com")
+          label ログイン
+        div.mui-textfield
+          input(type="text" placeholder="password")
+          label パスワード
+        div.singup-form__singup
+          button.singup-form__singup-button(type="submit")  登録
+
+        div.singup-form__supplement
+          div.singup-form__new-account
+            a(href="./login.html") 登録済みの方はこちら
+        
+
+    include includes/_footer.pug
