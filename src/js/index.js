@@ -1,5 +1,6 @@
 // myself
 import '../stylesheet/style.scss'
+import '../stylesheet/singup.scss'
 import '../stylesheet/login.scss'
 import '../stylesheet/header.scss'
 import '../stylesheet/footer.scss'
