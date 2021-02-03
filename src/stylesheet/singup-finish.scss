@@ -1,0 +1,35 @@
+@import "variables";
+
+.singup-finish {
+  width: 696px;
+  margin: 98px auto 98px;
+  @include mq(md) {
+    width: 80%;
+  }
+  @include mq(sm) {
+    width: 95%;
+  }
+
+  &__title {
+    font-size: 28px;
+    color: $extraColor;
+    margin-bottom: 40px;
+    @include mq(md) {
+      font-size: 24px;
+    }
+    @include mq(sm) {
+      font-size: 20px;
+      width: 95%;
+    }
+  }
+
+  &__massage {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  &__team {
+    margin: 40px;
+    font-size: 18px;
+  }
+}
