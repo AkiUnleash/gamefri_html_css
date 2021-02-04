@@ -26,4 +26,8 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: webpack
+        run: npm install
+
+      # Runs a single command using the runners shell
+      - name: webpack
         run: npm run build
