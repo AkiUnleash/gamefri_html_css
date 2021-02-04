@@ -28,12 +28,12 @@ jobs:
       - name: Install based on the package.json
         run: npm install
 
+      - name: Install based on the yarn.lock
+        run: yarn
+
       # Runs a single command using the runners shell
       - name: Build with Webpack
         run: npm run build
-
-      - name: Install based on the yarn.lock
-        run: yarn
 
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
