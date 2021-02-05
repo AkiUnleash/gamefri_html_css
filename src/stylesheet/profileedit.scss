@@ -1,0 +1,160 @@
+@import "variables";
+
+.header-in {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+  &__logoimg {
+    margin-left: 32px;
+    width: 64px;
+    @include mq(md) {
+      display: none;
+    }
+    @include mq(sm) {
+      display: none;
+    }
+  }
+
+  %__button-size {
+    height: 64px;
+  }
+
+  &__button {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    @include mq(md) {
+      width: 80%;
+      margin: auto 10%;
+    }
+    @include mq(sm) {
+      width: 92%;
+      margin: auto 4%;
+    }
+
+    &--home {
+      @extend %__button-size;
+    }
+    &--notifications {
+      @extend %__button-size;
+    }
+    &--search {
+      @extend %__button-size;
+    }
+    &--menu {
+      @extend %__button-size;
+    }
+  }
+}
+
+.profile-img {
+  position: relative;
+  &__cover-photo {
+    margin-top: 4px;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+  }
+  &__avatar-photo {
+    width: 192px;
+    height: 192px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 256px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+  }
+
+  &__avatar-photoselect {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 384px;
+    left: 136px;
+    right: 0px;
+    margin: auto;
+  }
+
+  &__cover-photoselect {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 136px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+  }
+}
+
+.profile-text {
+  @include mq(lg) {
+    margin: 120px auto 40px;
+    width: 600px;
+  }
+
+  @include mq(md) {
+    width: 90%;
+    margin: 120px 5% 40px;
+  }
+  @include mq(sm) {
+    width: 92%;
+    margin: 120px 4% 40px;
+  }
+
+  &__legend {
+    text-align: center;
+    color: $extraColor;
+  }
+
+  &__introduction {
+    height: 200px;
+  }
+
+  &__gender {
+    font-size: 18px;
+    margin-right: 32px;
+  }
+
+  &__birthday {
+    display: flex;
+    &--year {
+      width: 145px;
+      margin-right: 24px;
+    }
+    &--month {
+      width: 112px;
+      margin-right: 24px;
+    }
+    &--day {
+      width: 112px;
+      margin-right: 24px;
+    }
+  }
+
+  &__gamename {
+    margin-top: 40px;
+  }
+
+  &__timezone {
+    display: flex;
+    &--start {
+      width: 120px;
+      margin-right: 24px;
+    }
+    &--end {
+      width: 120px;
+      margin-right: 24px;
+    }
+  }
+
+  &__singup {
+    margin-top: 40px;
+    text-align: center;
+  }
+}
