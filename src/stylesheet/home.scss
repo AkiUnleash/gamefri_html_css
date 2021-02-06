@@ -1,0 +1,216 @@
+@import "variables";
+
+.cardaria {
+  margin: 24px auto;
+  width: 664px;
+  @include mq(md) {
+    margin: 24px 10%;
+    width: 80%;
+  }
+  @include mq(sm) {
+    margin: 24px 5%;
+    width: 90%;
+  }
+}
+
+.card:hover {
+  text-decoration: none;
+}
+
+.diary-imgcard {
+  width: 100%;
+  margin-top: 24px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+
+  &__photo {
+    position: relative;
+    display: block;
+  }
+  &__photo::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    display: block;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0) 1%,
+      rgba(#01579b, 0.8) 100%,
+      transparent 0%
+    );
+    width: 100%;
+    height: 50%;
+  }
+
+  &__photo-img {
+    width: 100%;
+  }
+
+  &__gametitle {
+    position: absolute;
+    font-size: 18px;
+    color: #ffffff;
+    bottom: 11%;
+    left: 2%;
+    z-index: 10;
+  }
+  &__title {
+    position: absolute;
+    font-size: 24px;
+    color: #ffffff;
+    bottom: 2%;
+    left: 2%;
+    z-index: 10;
+    @include mq(md) {
+      font-size: 18px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+    }
+  }
+
+  &__avatar {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__infomation {
+    display: flex;
+    align-items: center;
+    height: 120px;
+  }
+
+  &__avatar {
+    margin-left: 32px;
+    margin-right: 24px;
+  }
+  &__data {
+    color: $extraColor;
+  }
+
+  &__nice {
+    margin-left: auto;
+    margin-right: 56px;
+    font-size: 28px;
+    color: $accentColor;
+    @include mq(md) {
+      font-size: 18px;
+      margin-right: 32px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+      margin-right: 24px;
+    }
+  }
+}
+
+// No picture
+.diary-card {
+  width: 100%;
+  margin-top: 24px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+
+  &__text {
+    height: 160px;
+    background: linear-gradient(#40c4ff, #1198eb);
+  }
+  &__gametitle {
+    padding-top: 8px;
+    padding-left: 2%;
+    font-size: 18px;
+    color: #ffffff;
+  }
+  &__title {
+    font-size: 24px;
+    padding-left: 2%;
+    color: #ffffff;
+    @include mq(md) {
+      font-size: 18px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+    }
+  }
+
+  &__avatar {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__infomation {
+    display: flex;
+    align-items: center;
+    height: 120px;
+  }
+
+  &__avatar {
+    margin-left: 32px;
+    margin-right: 24px;
+  }
+  &__data {
+    color: $extraColor;
+  }
+
+  &__nice {
+    margin-left: auto;
+    margin-right: 56px;
+    font-size: 28px;
+    color: $accentColor;
+    @include mq(md) {
+      font-size: 18px;
+      margin-right: 32px;
+    }
+    @include mq(sm) {
+      font-size: 18px;
+      margin-right: 24px;
+    }
+  }
+}
+
+.adddiary {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: $mainColor;
+  vertical-align: middle;
+  text-align: center;
+  color: $baseColor;
+  z-index: 10;
+  transition-duration: 1s;
+
+  &::before {
+    @extend %mark;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    @extend %mark;
+    left: 25%;
+    transform: rotate(90deg);
+  }
+  &:hover {
+    text-decoration: none;
+    transform: rotate(180deg);
+  }
+}
+
+%mark {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 4px;
+  content: "";
+  display: inline-block;
+  top: 45%;
+  width: 40px;
+  height: 8px;
+}
