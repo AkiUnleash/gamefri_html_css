@@ -1,56 +1,5 @@
 @import "variables";
 
-.header-in {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-
-  &__logoimg {
-    margin-left: 32px;
-    width: 64px;
-    @include mq(md) {
-      display: none;
-    }
-    @include mq(sm) {
-      display: none;
-    }
-  }
-
-  %__button-size {
-    height: 64px;
-  }
-
-  &__button {
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 600px;
-    @include mq(md) {
-      width: 80%;
-      margin: auto 10%;
-    }
-    @include mq(sm) {
-      width: 92%;
-      margin: auto 4%;
-    }
-
-    &--home {
-      @extend %__button-size;
-    }
-    &--notifications {
-      @extend %__button-size;
-    }
-    &--search {
-      @extend %__button-size;
-    }
-    &--menu {
-      @extend %__button-size;
-    }
-  }
-}
-
 .profile-img {
   position: relative;
   &__cover-photo {

@@ -1,5 +1,6 @@
 // myself
 import '../stylesheet/style.scss'
+import '../stylesheet/header_in.scss'
 import '../stylesheet/home.scss'
 import '../stylesheet/profileedit.scss'
 import '../stylesheet/singup.scss'
