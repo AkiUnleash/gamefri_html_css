@@ -3,18 +3,8 @@ html(lang="ja")
   include includes/_head.pug
 
   body
-    header.header-in
-      div.header-in__logo
-        img.header-in__logoimg(src="../img/logo_sm.svg")
-      div.header-in__button
-        a(href="")
-          img.header-in__button--home(src="../img/header-in/home.svg")
-        a(href="")
-          img.header-in__button--notifications(src="../img/header-in/notifications.svg")
-        a(href="")
-          img.header-in__button--search(src="../img/header-in/search.svg")
-        a(href="")
-          img.header-in__button--menu(src="../img/header-in/menu.svg")
+
+    include includes/_header_in.pug
 
     div.profile-img
       a(href="")
