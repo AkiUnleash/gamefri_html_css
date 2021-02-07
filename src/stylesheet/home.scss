@@ -1,14 +1,14 @@
 @import "variables";
 
 .cardaria {
-  margin: 24px auto;
+  margin: 104px auto 40px;
   width: 664px;
   @include mq(md) {
-    margin: 24px 10%;
+    margin: 104px 10%;
     width: 80%;
   }
   @include mq(sm) {
-    margin: 24px 5%;
+    margin: 104px 5%;
     width: 90%;
   }
 }
@@ -176,8 +176,6 @@
 
 .adddiary {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -187,6 +185,12 @@
   color: $baseColor;
   z-index: 10;
   transition-duration: 1s;
+  bottom: 32px;
+  right: 32px;
+  @include mq(sm) {
+    bottom: 16px;
+    right: 16px;
+  }
 
   &::before {
     @extend %mark;
