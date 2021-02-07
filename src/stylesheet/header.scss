@@ -55,9 +55,9 @@
   .header {
     width: 100%;
     height: 60px;
-    position: fixed;
     top: 0;
     left: 0;
+    z-index: 99;
   }
 
   /*ドロワー*/
@@ -73,7 +73,7 @@
       display: block;
       width: 80px;
       height: 80px;
-      position: fixed;
+      position: absolute;
       right: 0;
       // ハンバーガーアイコンの中の線
       &-parts,
@@ -198,7 +198,6 @@
   .header {
     width: 100%;
     height: 60px;
-    position: fixed;
     top: 0;
     left: 0;
   }
@@ -216,7 +215,7 @@
       display: block;
       width: 80px;
       height: 80px;
-      position: fixed;
+      position: absolute;
       right: 0;
       // ハンバーガーアイコンの中の線
       &-parts,
@@ -262,29 +261,29 @@
       background: #ffffff;
       color: #000;
       max-width: 100%;
-      width: 456px;
+      width: 296px;
       height: 100vh;
       overflow-y: auto; //スクロール
       -webkit-overflow-scrolling: touch; //スクロール（SP）
       position: fixed;
       top: 0;
-      right: -456px;
+      right: -296px;
     }
 
     // メニュー内のロゴ
     &__logo {
-      width: 456px;
-      padding: 114px 0px 80px;
+      width: 296px;
+      padding: 114px 0px 40px;
       text-align: center;
     }
     &__logo_img {
-      width: 113px;
+      width: 80px;
     }
 
     &__item {
       text-align: center;
-      padding: 0px 0px 48px;
-      font-size: 28px;
+      padding: 0px 0px 24px;
+      font-size: 18px;
     }
 
     // z-indexの指定（1がメインエリア）
